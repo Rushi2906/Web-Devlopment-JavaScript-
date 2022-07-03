@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		a = parseInt(prompt("Enter 1st Number"));
+        b = parseInt(prompt("Enter 2nd Number"));
+        for (i = a; i <= b; i++) {
+            flag = true;
+            for (j = 2; j <= i / 2; j++) {
+                if (i % j == 0) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (i != 1) {
+                if (flag) {
+                    console.log(i);
+                }
+            }
+        }
+	</script>
+</body>
+</html>

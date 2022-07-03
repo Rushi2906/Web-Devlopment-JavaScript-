@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StringMethodsDemo</title>
+</head>
+
+<body>
+    <script>
+        let str = prompt("Enter a string ");
+        document.write(" String " + str + "<br/>");
+        document.write(" 1. length " + str.length + " <br/>");
+        document.write(" 2. charAt " + str.charAt(3) + " <br/>");
+        document.write(" 3. indexOf " + str.indexOf("a") + " <br/>");
+        document.write(" 4. lastIndexOf " + str.lastIndexOf("a") + " <br/>");
+        document.write(" 5. includes " + str.includes("Hello") + " <br/>");
+        document.write(
+            " 6.substring(start,end) " + str.substring(1, 3) + " <br/>"
+        );
+        document.write(" 7. substr(start,length) " + str.substr(1, 3) + " <br/>");
+        document.write(" 8. slice(start,end) " + str.slice(1, 3) + " <br/>");
+        document.write(" 9. repeat " + str.repeat(3) + " <br/>");
+        document.write(" 10. replace " + str.replace("a", "e") + " <br/>");
+        document.write(" 11. trim " + str.trim() + " <br/> ");
+        document.write(" 12. startsWith " + str.startsWith("j") + " <br/> ");
+        document.write(" 13. toLowerCase " + str.toLowerCase() + " <br/> ");
+        document.write(" 14. toUpperCase " + str.toUpperCase() + " <br/> ");
+        document.write(" 15. split " + str.split(" ") + " <br/> ");
+
+        console.log(str);
+    </script>
+</body>
+
+</html>

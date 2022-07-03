@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		a=parseInt(prompt("Enter Number: "));
+
+		function Prime(a){
+			flag=false;
+			for(i=2;i<a;i++){
+				if(a%i==0){
+					flag=true;
+					break;
+				}
+			}
+			if(flag){
+				console.log("Not Prime")
+			}
+			else{
+				console.log("Prime")
+			}
+		}
+		Prime(a);
+	</script>
+</body>
+</html>

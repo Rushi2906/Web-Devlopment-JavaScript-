@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ArrayMethods</title>
+</head>
+
+<body>
+    <script>
+        let a = [1, 2, 3, 4.2, "jenil", "gajjar", true, false];
+        document.write("array1 : " + a + "<br/>");
+        a.push(3);
+        document.write("push : " + a + "<br/>");
+        a.pop();
+        document.write("pop : " + a + "<br/>");
+        a.shift();
+        document.write("shift : " + a + "<br/>");
+        a.unshift("1st");
+        document.write("unshift : " + a + "<br/>");
+
+        document.write("length : " + a.length + "<br/>");
+
+        let b = ["a", "b", 1, 2, 3, true, "lastElement"];
+        document.write("concat : " + a.concat(b) + "<br/>");
+
+        a.splice(3, 0, "jenil", "gajjar");
+        document.write(
+            " splice  ( index, deleteCount, element1, element2,..) : " + a + "<br/>"
+        );
+
+        document.write("slice : " + a.slice(1, 5) + "<br/>");
+
+        a.reverse();
+        document.write("reverse : " + a + "<br/>");
+
+        document.write(
+            "copyWithin( target , start, end)  : " + a.copyWithin(5, 2, 4) + "<br/>"
+        );
+        a.sort();
+        document.write("sort : " + a + "<br/>");
+
+        a.fill(true, 5, 8);
+        document.write("fill(value,start,end)  : " + a + "<br/>");
+
+        document.write("lastTndexOf  : " + a.lastIndexOf(true) + "<br/>");
+
+        document.write("indexOf  : " + a.indexOf(true) + "<br/>");
+
+        document.write("includes  : " + a.includes(2) + "<br/>");
+    </script>
+</body>
+
+</html>

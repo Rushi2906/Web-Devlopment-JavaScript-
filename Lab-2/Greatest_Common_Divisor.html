@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		a = parseInt(prompt("Enter A Number"));
+        b = parseInt(prompt("Enter A Number"));
+        gcd = 1;
+        for (i = 1; i <= Math.min(a, b); i++) {
+            if (a % i == 0 && b % i == 0) {
+                gcd = i;
+            }
+        }
+        document.write("Gratest Common Divisor " + gcd);
+	</script>
+</body>
+</html>
