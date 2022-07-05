@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Timer</title>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>
+				Enter Seconds
+			</td>
+			<td>
+				<input type="text" id="second">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Seconds Left
+			</td>
+			<td>
+				<input type="text" id="secondsLeft">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="button" value="Strat" onclick="StartTimer()">
+			</td>
+		</tr>
+	</table>
+	<div id="image" style="display: none;">
+		<img src="download.jpeg">
+	</div>
+
+	<script type="text/javascript">
+		s1=document.getElementById("second");
+		s2=document.getElementById("secondsLeft")
+		temp=0;
+		function StartTimer(){
+			temp=s1.value;
+			interval=setInterval(timerMain,1000)
+		}
+		function timerMain(){
+			if(temp<0){
+				stopInterval();
+			}
+			else{
+				s2.value=temp;
+				temp--;
+			}
+		}
+		function stopInterval(){
+			clearInterval(interval);
+			document.getElementById("image").style.display="block";
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#username{
+			width: 20%;
+		}
+		table{
+			width: 50%;
+			background-color: lightblue;
+			height: 80vh;
+		}
+		table tr td{
+			padding: 10px;
+		}
+		input{
+			width: 90%;
+		}
+		input[type="button"]{
+			width: 10%;
+		}
+	</style>
+</head>
+<body>
+	<form>
+		<table align="center">
+			<tr>
+				<td colspan="4" align="center">
+					<h1>Login Page</h1>
+				</td>
+			</tr>
+			<tr width="100px">
+				<td id="username" width="50%">
+					Enter User Name:
+				</td>
+				<td>
+					<input type="text" id="text">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Enter Password:
+				</td>
+				<td>
+					<input type="Password" id="password">
+				</td>
+				
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="button" value="show" id="toggleBtn" onclick="togglePass()">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="button" value="Login" onclick="login()" id="loginbutton">
+				</td>
+			</tr>
+		</table>
+	</form>
+
+	<script type="text/javascript">
+		function login(){
+			
+			var un = document.getElementById("text");
+			var p = document.getElementById("password");
+
+			if(un.value=="rushimanani@gmail.com" && p.value=="rushimanani"){
+				alert("Valid User");
+			}
+			else{
+				alert("Username/password does not match");	
+			}
+		}
+
+		function togglePass(){
+
+			var t = document.getElementById("password");
+			var tb = document.getElementById("toggleBtn");
+			if(t.type=="text"){
+				t.type="password";	
+				tb.value="show";
+			}
+			else{
+				t.type="text";
+				tb.value="hide";
+			}
+		}
+	</script>
+</body>
+</html>
