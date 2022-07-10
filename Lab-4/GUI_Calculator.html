@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GUI Calculator</title>
+    <style>
+        
+        * {
+            box-sizing: border-box;
+            font-size: large;
+            margin: 0px;
+        }
+        
+        div {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to right, #f51161, #683ab7);
+        }
+        
+        table {
+            padding: 0.2rem 0.6rem 1.3rem;
+            background: white;
+            border-radius: 10%;
+            box-shadow: 2px 2px 22px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        input {
+            width: 100%;
+            text-align: center;
+            background-color: white;
+            border: 0;
+        }
+        
+        input[type="button"] {
+            background-color: white;
+            padding: 11px 25px;
+        }
+        
+        
+        
+        .number {
+            color: var(--number);
+        }
+        
+        td input:hover {
+            background-color: #683ab7;
+            border-radius: 50px;
+        }
+        
+        .display {
+            padding: 1.2rem 0;
+            margin-bottom: 0.5em;
+            font-size: 3em;
+            text-align: right;
+        }
+        
+        #display1 {
+            text-align: right;
+            margin-top: 1.8rem;
+            font-size: 1.4rem;
+            font-weight: 300;
+            padding-top: 0.8rem;
+            height: 8px;
+            padding-right: 1rem;
+            color: grey;
+            max-width: 298.91px;
+        }
+        
+        h2 {
+            text-align: right;
+            margin-top: 1.8rem;
+            font-size: 3rem;
+            font-weight: 800;
+            padding-top: 0.8rem;
+            padding-right: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <table>
+            <tr>
+                <td colspan="4">
+                    <h4 id="display1" class="display">0</h4>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="button" value="AC" onclick="clearALl()" /td></td>
+                <td><input type="button" value="DEL" onclick="del()" /td></td>
+                <td>
+                    <input type="button" value="%" onclick="addNumber(this)" />
+                </td>
+                <td>
+                    <input class="symbol" type="button" value="/" onclick="addNumber(this)" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="number" type="button" value="7" onclick="addNumber(this)" />
+                </td>
+                <td>
+                    <input class="number" type="button" value="8" onclick="addNumber(this)" />
+                </td>
+                <td>
+                    <input class="number" type="button" value="9" onclick="addNumber(this)" />
+                </td>
+                <td>
+                    <input class="symbol" type="button" value="*" onclick="addNumber(this)" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="number" type="button" value="4" onclick="addNumber(this)" />
+                </td>
+                <td>
+                    <input class="number" type="button" value="5" onclick="addNumber(this)" />
+                </td>
+                <td>
+                    <input class="number" type="button" value="6" onclick="addNumber(this)" />
+                </td>
+                <td>
+                    <input class="symbol" type="button" value="-" onclick="addNumber(this)" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="number" type="button" value="1" onclick="addNumber(this)" />
+                </td>
+                <td>
+                    <input class="number" type="button" value="2" onclick="addNumber(this)" />
+                </td>
+                <td>
+                    <input class="number" type="button" value="3" onclick="addNumber(this)" />
+                </td>
+                <td>
+                    <input class="symbol" type="button" value="+" onclick="addNumber(this)" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="number" type="button" value="0" onclick="addNumber(this)" />
+                </td>
+                <td>
+                    <input class="number" type="button" value="." onclick="addNumber(this)" />
+                </td>
+                <td colspan="2">
+                    <input class="equal" type="button" value="=" onclick="answer()" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script type="text/javascript">
+        var temp2;
+        var temp3;
+        var oldvalue = "";
+        var newvalue;
+
+        function clearALl() {
+            var temp = document.getElementById("display1");
+            temp.innerHTML = 0;
+            oldvalue = "";
+            newvalue = 0;
+        }
+
+        function addNumber(number) {
+            var temp = document.getElementById("display1");
+            if (temp.innerHTML == "0") {
+                temp.innerHTML = "";
+            }
+            if (number.value == "%") {
+                oldvalue = parseFloat(eval(oldvalue)) / 100;
+                temp.innerHTML = oldvalue;
+            } else {
+                temp.innerHTML += number.value;
+                oldvalue += number.value;
+            }
+        }
+
+        function del() {
+            var temp = document.getElementById("display1");
+            temp2 = temp.innerHTML;
+            temp3 = temp2.substring(0, temp2.length - 1);
+            oldvalue = temp2.substring(0, temp2.length - 1);
+            if (temp3 == "" || temp3 == "0" || temp3 == " ") {
+                temp.innerHTML = 0;
+            } else {
+                temp.innerHTML = temp3;
+            }
+        }
+
+        function answer() {
+            var temp = document.getElementById("display1");
+            newvalue = eval(oldvalue);
+            if (newvalue != parseInt(newvalue)) {
+                newvalue = newvalue.toFixed(2);
+            }
+            oldvalue = newvalue;
+            temp.innerHTML = newvalue;
+        }
+    </script>
+</body>
+
+</html>
