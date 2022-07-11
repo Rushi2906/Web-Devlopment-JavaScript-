@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Student Attendance</title>
+	<style type="text/css">
+		#absentnumber{
+			border: 1px solid black;
+			width: 50%;
+			height: 60vh;
+			position: fixed;
+			margin-top: 50px;
+			margin-left: 400px;
+		}
+	</style>
+</head>
+<body>
+	<b><u><h1 align="center">Student Present</h1></u></b>
+	<br>
+	<div>
+		<input type="button" value="Present All" id="checkAll" onclick="checkAll()">
+		<input type="button" value="Absent All" id="uncheckedAll" onclick="uncheckAll()">
+		<br>
+	</div>
+	<div id="absentnumber">
+		
+	</div>
+
+	<script type="text/javascript">
+
+		for(i=101;i<=160;i++){
+			document.write("<input type=\"checkbox\" name=\"element\" onclick=\"print\" id=\"check\" value=\"i\">" +i+ "<br>")
+		}
+		for(i=201;i<=285;i++){
+			document.write("<input type=\"checkbox\" name=\"element\" onclick=\"print\" id=\"check\ value=\"i\">" +i+ "<br>")
+		}
+		for(i=301;i<=360;i++){
+			document.write("<input type=\"checkbox\" name=\"element\" onclick=\"print\" id=\"check\ value=\"i\">" +i+ "<br>")
+		}
+
+		function checkAll(){
+			var ele=document.getElementsByName('element');
+			for(i=0;i<ele.length;i++){
+					ele[i].checked=true;
+			}
+		}
+
+		function uncheckAll(){
+			var ele=document.getElementsByName('element');
+			for(i=0;i<ele.length;i++){
+					ele[i].checked=false;			
+			}
+		}
+
+		
+
+
+	</script>
+</body>
+</html>
