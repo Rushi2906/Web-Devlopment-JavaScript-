@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 <head>
 	<meta charset="utf-8">
 	<title>Snake Game</title>
@@ -12,6 +11,13 @@
 			left: 400px;
 			
 		}
+		#food_of_snake{
+			height: 30px;
+			width: 30px;
+			position: absolute;
+			top: 300px;
+			left: 200px;
+		}
 		#box{
 			height: 450px;
 			width: 1000px;
@@ -22,9 +28,10 @@
 		}
 	</style>
 </head>
-<body>
+<body onload="setFood()">
 	<div id="box">
 		<img src="my_snake.jpg" id="myimage">
+		<img src="food.jpeg" id="food_of_snake">
 	</div>
 	<div>
 		<div>
@@ -38,27 +45,70 @@
 			<input type="button" value="Down v" onclick="goDown()">
 		</div>
 		<div>
-			<h4>Score: 0</h4>
-			<h4>Life Remaining: 3</h4>
+			<h4>Score: <h4 id="score">0</h4></h4>
+			<h4 id="life">Life Remaining: 3</h4>
 		</div>
 	</div>
 
 	<script type="text/javascript">
 		var image=document.getElementById("myimage");
+		var food=document.getElementById("food_of_snake");
 		var leftPosition= 400;
 		var topPosition=200;
 		var upInterval;
 		var downInterval;
 		var leftInterval;
 		var rightInterval;
-		function goLeft(){
+		var life=document.getElementById("life");
+		var score=document.getElementById("score");
 
-			leftInterval=setInterval(startGoingLeft,20);
-			clearInterval(upInterval);
-			clearInterval(rightInterval);
-			clearInterval(downInterval);
-				
+		function goLeft(){
+			if(leftInterval==null){
+				leftInterval=setInterval(startGoingLeft,20);
+				clearInterval(upInterval);
+				clearInterval(rightInterval);
+				clearInterval(downInterval);
+				upInterval=null;
+				rightInterval=null;
+				downInterval=null;
+			}		
 		}
+		function goRight(){
+			if(rightInterval==null){
+				rightInterval=setInterval(startGoingRight,20);
+				clearInterval(leftInterval);
+				clearInterval(upInterval);
+				clearInterval(downInterval);
+				leftInterval=null;
+				upInterval=null;
+				downInterval=null;
+			}	
+		}
+		function goUp(){
+			if(upInterval==null){
+				upInterval=setInterval(startGoingUp,20);
+				clearInterval(leftInterval);
+				clearInterval(rightInterval);
+				clearInterval(downInterval);
+				leftInterval=null;
+				rightInterval=null;
+				downInterval=null;
+			}
+
+		}
+		function goDown(){
+			if(downInterval==null){
+				downInterval=setInterval(startGoingDown,20);
+				clearInterval(leftInterval);
+				clearInterval(rightInterval);
+				clearInterval(upInterval);
+				leftInterval=null;
+				rightInterval=null;
+				upInterval=null;
+			}	
+		}
+		
+
 		function startGoingLeft(){
 			leftPosition--;
 			image.style.left=leftPosition+"px";
@@ -67,31 +117,13 @@
 				topPosition=200;
 			}
 		}
-
-
-		function goRight(){
-			rightInterval=setInterval(startGoingRight,20);
-			clearInterval(leftInterval);
-			clearInterval(upInterval);
-			clearInterval(downInterval);
-			
-		}
 		function startGoingRight(){
 			leftPosition++;
 			image.style.left=leftPosition+"px";
 			if(leftPosition>900){
 				leftPosition=400;
 				topPosition=200;
-			}
-		}
-
-		function goUp(){
-			upInterval=setInterval(startGoingUp,20);
-			clearInterval(leftInterval);
-			clearInterval(rightInterval);
-			clearInterval(downInterval);
-
-		}
+			}		}
 		function startGoingUp(){
 			topPosition--;
 			image.style.top=topPosition+"px";
@@ -99,15 +131,6 @@
 				leftPosition=400;
 				topPosition=200;
 			}
-		}
-
-
-		function goDown(){
-			downInterval=setInterval(startGoingDown,20
-				if);
-			clearInterval(leftInterval);
-			clearInterval(rightInterval);
-			clearInterval(upInterval);	
 		}
 		function startGoingDown(){
 			topPosition++;
@@ -117,10 +140,7 @@
 				topPosition=200;
 			}
 		}
-		
-			
 
 	</script>
-
 </body>
 </html>
