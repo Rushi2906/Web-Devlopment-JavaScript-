@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		student1=[
+			{Name:"Rushi",Age:18,Sem:3},
+			{Name:"Kevin",Age:19,Sem:4},
+			{Name:"Himanshu",Age:20,Sem:5}
+		];
+
+		answer=student1.map((stu)=>{
+			return "<li>"+stu.Name+"</li>"
+		})
+
+		document.write("<ul>");
+		document.write(answer);
+		document.write("</ul>");
+
+	</script>
+</body>
+</html>

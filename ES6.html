@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		let student1={
+			EnrollmentNo:21010101121,
+			Name:'Rushi',
+			Sem:3
+		}
+		console.log(student1.EnrollmentNo);
+		console.log(student1.Name);
+		console.log(student1["Sem"]);
+
+		//Destructing
+		const{EnrollmentNo,Name,Sem}=student1;
+		console.log(Name);
+
+		//Spread
+		newStudent={...student1,Sem:2};
+		console.log(newStudent);
+
+		//var
+		//Global scope
+		var a=10;
+		function printMe1(){
+			console.log(a);
+		}
+		printMe1();
+		console.log(a);
+
+		//Within the Function scope
+		function printMe2(){
+			var b=20;
+			var b=30;//We update the value of b
+			console.log(b);
+		}
+		printMe2();
+		//console.log(b); 
+			//We can't print b because b is not defined
+		
+		//const
+		//scope within the block
+		
+		function printMe3(){
+			const x=40;
+			//var a=50;
+				//We can't change the value of a	
+			console.log(x);
+		}
+		printMe3();
+
+		//let
+		//we can't access it outside the block
+
+		let p=110;
+		function printMe4(){
+			if(true){
+				let q=120;
+				console.log(q);
+			}
+			//console.log(q);
+				//it gives Error
+		}
+		printMe4();
+
+
+	</script>
+</body>
+</html>
