@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title>Snake Game</title>
+	<style type="text/css">
+		#myimage{
+			height: 75px;
+			width: 100px;
+			position: absolute;
+			top: 200px;
+			left: 400px;
+			
+		}
+		#food_of_snake{
+			height: 30px;
+			width: 30px;
+			position: absolute;
+			top: 300px;
+			left: 200px;
+		}
+		#box{
+			height: 450px;
+			width: 1000px;
+			border: 1px solid black;
+			position: fixed;
+			margin-top: 100px;
+			margin-left: 150px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<img src="my_snake.jpg" id="myimage">
+		<img src="my_food.png" id="food_of_snake">
+	</div>
+	<div>
+		<div>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="button" value="Top ^" onclick="goUp()" >
+			<br>
+			<input type="button" value="Left<==" onclick="goLeft()">
+			<input type="button" value="Right==>" onclick="goRight()">
+			<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="button" value="Down v" onclick="goDown()">
+		</div>
+		<div>
+			<h4>Score: <h4 id="score">0</h4></h4>
+			<h4 id="life">Life Remaining: 3</h4>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var image=document.getElementById("myimage");
+		var food=document.getElementById("food_of_snake");
+		var leftPosition= 400;
+		var topPosition=200;
+		var upInterval;
+		var downInterval;
+		var leftInterval;
+		var rightInterval;
+		var life=document.getElementById("life");
+		var score=document.getElementById("score");
+        var foodLeft,foodTop;
+        var t1,l1;
+
+		function goLeft(){
+            checkmatchingposition();
+			if(leftInterval==null){
+				leftInterval=setInterval(startGoingLeft,20);
+				clearInterval(upInterval);
+				clearInterval(rightInterval);
+				clearInterval(downInterval);
+				upInterval=null;
+				rightInterval=null;
+				downInterval=null;
+			}		
+		}
+		function goRight(){
+            checkmatchingposition();
+			if(rightInterval==null){
+				rightInterval=setInterval(startGoingRight,20);
+				clearInterval(leftInterval);
+				clearInterval(upInterval);
+				clearInterval(downInterval);
+				leftInterval=null;
+				upInterval=null;
+				downInterval=null;
+			}	
+		}
+		function goUp(){
+            checkmatchingposition();
+			if(upInterval==null){
+				upInterval=setInterval(startGoingUp,20);
+				clearInterval(leftInterval);
+				clearInterval(rightInterval);
+				clearInterval(downInterval);
+				leftInterval=null;
+				rightInterval=null;
+				downInterval=null;
+			}
+
+		}
+		function goDown(){
+            checkmatchingposition();
+			if(downInterval==null){
+				downInterval=setInterval(startGoingDown,20);
+				clearInterval(leftInterval);
+				clearInterval(rightInterval);
+				clearInterval(upInterval);
+				leftInterval=null;
+				rightInterval=null;
+				upInterval=null;
+			}	
+		}
+		
+
+		function startGoingLeft(){
+			leftPosition--;
+			image.style.left=leftPosition+"px";
+			if(leftPosition<0){
+				leftPosition=400;
+				topPosition=200;
+			}
+		}
+		function startGoingRight(){
+			leftPosition++;
+			image.style.left=leftPosition+"px";
+			if(leftPosition>900){
+				leftPosition=400;
+				topPosition=200;
+			}		}
+		function startGoingUp(){
+			topPosition--;
+			image.style.top=topPosition+"px";
+			if(topPosition<0){
+				leftPosition=400;
+				topPosition=200;
+			}
+		}
+		function startGoingDown(){
+			topPosition++;
+			image.style.top=topPosition+"px";
+			if(topPosition>375){
+				leftPosition=400;
+				topPosition=200;
+			}
+		}
+
+        function checkmatchingposition(){
+            t1=parseInt(food.style.top);
+            console.log(t1);
+			l1=parseInt(food.style.left);
+            console.log(l1);
+	 		if(leftPosition<=l1+100 && leftPosition>=l1-100 && topPosition<=t1+100 && topPosition>=t1-100 ){
+		 		//scoreCount++;
+		 		//score.innerHTML=scoreCount;
+		 		changeLocationOfFood();
+	 		}
+        }
+
+        function changeLocationOfFood(){
+            console.log(5)
+            foodTop=Math.random()*400+150;
+			foodLeft=Math.random()*400+350;
+			console.log(foodTop)
+			if(foodLeft<screen.availWidth && foodTop<screen.availHeight){
+				food.style.top=foodTop+"px";
+				food.style.left=foodLeft+"px";
+			}
+			else{
+				changeLocationOfFood();
+			}
+        }
+
+	</script>
+</body>
+</html>
