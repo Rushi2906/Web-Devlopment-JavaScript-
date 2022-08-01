@@ -1,0 +1,200 @@
+
+
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title>Snake Game</title>
+	<style type="text/css">
+		#myimage{
+			height: 75px;
+			width: 100px;
+			position: absolute;
+			top: 200px;
+			left: 400px;
+			
+		}
+		#food_of_snake{
+			height: 30px;
+			width: 30px;
+			position: absolute;
+			top: 300px;
+			left: 200px;
+		}
+		#box{
+			height:500px;
+			width: 1000px;
+			border: 1px solid black;
+			position: absolute;
+			margin-top: 100px;
+			margin-left: 150px;
+		}
+	</style>
+</head>
+<body onload="changeLocationOfFood();" onkeydown="moveControl(event);">
+	<div id="box">
+		<img src="my_snake.jpg" id="myimage">
+		<img src="food.jpeg" id="food_of_snake">
+	</div>
+	<div>
+		<div>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="button" value="Top ^" onclick="goUp()" >
+			<br>
+			<input type="button" value="Left<==" onclick="goLeft()">
+			<input type="button" value="Right==>" onclick="goRight()">
+			<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="button" value="Down v" onclick="goDown()">
+		</div>
+		<div>
+			<h4>Score: <span id="score">0</span></h4>
+			<h4>Life Remaining:<span id="life">3</span></h4>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var image=document.getElementById("myimage");
+		var food=document.getElementById("food_of_snake");
+		var leftPosition= 400;
+		var topPosition=200;
+		var upInterval;
+		var downInterval;
+		var leftInterval;
+		var rightInterval;
+		var life=document.getElementById("life");
+		var score=document.getElementById("score");
+        var foodLeft,foodTop;
+        var t1,l1,heart=2;
+
+		function goLeft(){
+            checkmatchingposition();
+            clearInterval(upInterval);
+			clearInterval(rightInterval);
+			clearInterval(downInterval);
+			if(leftInterval==null){
+				leftInterval=setInterval(startGoingLeft,20);
+				
+				upInterval=null;
+				rightInterval=null;
+				downInterval=null;
+			}		
+		}
+		function goRight(){
+            checkmatchingposition();
+            clearInterval(leftInterval);
+			clearInterval(upInterval);
+			clearInterval(downInterval);
+			if(rightInterval==null){
+				rightInterval=setInterval(startGoingRight,20);
+				
+				leftInterval=null;
+				upInterval=null;
+				downInterval=null;
+			}	
+		}
+		function goUp(){
+            checkmatchingposition();
+            clearInterval(leftInterval);
+			clearInterval(rightInterval);
+			clearInterval(downInterval);
+			if(upInterval==null){
+				upInterval=setInterval(startGoingUp,20);
+				leftInterval=null;
+				rightInterval=null;
+				downInterval=null;
+			}
+
+		}
+		function goDown(){
+            checkmatchingposition();
+            clearInterval(leftInterval);
+			clearInterval(rightInterval);
+			clearInterval(upInterval);
+			if(downInterval==null){
+				downInterval=setInterval(startGoingDown,20);
+				
+				leftInterval=null;
+				rightInterval=null;
+				upInterval=null;
+			}	
+		}
+		
+
+		function startGoingLeft(){
+			leftPosition--;
+			image.style.left=leftPosition+"px";
+			if(leftPosition<0){
+				life.innerHTML=heart--;
+				leftPosition=400;
+				topPosition=200;
+			}
+		}
+		function startGoingRight(){
+			leftPosition++;
+			image.style.left=leftPosition+"px";
+			if(leftPosition>900){
+				life.innerHTML=heart--;
+				leftPosition=400;
+				topPosition=200;
+			}		
+		}
+		function startGoingUp(){
+			topPosition--;
+			image.style.top=topPosition+"px";
+			if(topPosition<0){
+				life.innerHTML=heart--;
+				leftPosition=400;
+				topPosition=200;
+			}
+		}
+		function startGoingDown(){
+			topPosition++;
+			image.style.top=topPosition+"px";
+			if(topPosition>375){
+				life.innerHTML=heart--;
+				leftPosition=400;
+				topPosition=200;
+			}
+		}
+
+        function checkmatchingposition(){
+            t1=parseInt(food.style.top);
+            console.log(parseInt(food.style.top));
+			l1=parseInt(food.style.left);
+            console.log(l1);
+	 		if(leftPosition<=l1+30 && leftPosition>=l1-30 && topPosition<=t1+30 && topPosition>=t1-30 ){
+		 		// scoreCount++;
+		 		// score.innerHTML=scoreCount;
+		 		changeLocationOfFood();
+	 		}
+        }
+
+        function changeLocationOfFood(){
+            foodTop=Math.random()*200+150;
+			foodLeft=Math.random()*200+350;
+			console.log(foodTop)
+			if(foodLeft<screen.availWidth && foodTop<screen.availHeight){
+				food.style.top=foodTop+"px";
+				food.style.left=foodLeft+"px";
+			}else{
+				changeLocationOfFood();
+			}
+        }
+        function moveControl(event){
+			if(event.keyCode==37){
+				goLeft();
+			}
+			else if(event.keyCode==38){
+				goUp();
+			}
+			else if(event.keyCode==39){
+				goRight();
+			}
+			else if(event.keyCode==40){
+				goDown();
+			}
+		}
+
+	</script>
+</body>
+</html>
